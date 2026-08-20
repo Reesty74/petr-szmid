@@ -141,17 +141,21 @@
   /* ---------- gallery ---------- */
   .gallery-section{background:var(--stone);}
   .gallery-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;
+    column-count:3;column-gap:20px;
   }
   .gallery-item{
+    break-inside:avoid;margin-bottom:20px;
     border:1px solid var(--border-light);background:#fff;overflow:hidden;
+    display:inline-block;width:100%;
   }
-  .gallery-item .thumb{
-    width:100%;height:220px;background:var(--stone-2);
-    display:flex;align-items:center;justify-content:center;
-  }
-  .gallery-item img{width:100%;height:100%;object-fit:contain;display:block;}
+  .gallery-item img{width:100%;display:block;}
   .gallery-item .caption{padding:14px 16px;font-size:14px;color:#5b564c;}
+  @media (max-width:860px){
+    .gallery-grid{column-count:2;}
+  }
+  @media (max-width:560px){
+    .gallery-grid{column-count:1;}
+  }
 
   /* ---------- about ---------- */
   .about{background:var(--charcoal-2);color:var(--stone);}
@@ -431,7 +435,7 @@
     var items = data.items || [];
     if (!grid || !items.length) return;
     grid.innerHTML = items.map(function(item){
-      return '<div class="gallery-item"><div class="thumb"><img src="' + item.image + '" alt="' + (item.caption || '') + '" loading="lazy"></div><div class="caption">' + (item.caption || '') + '</div></div>';
+      return '<div class="gallery-item"><img src="' + item.image + '" alt="' + (item.caption || '') + '" loading="lazy">' + (item.caption ? '<div class="caption">' + item.caption + '</div>' : '') + '</div>';
     }).join('');
   }).catch(function(){});
 
