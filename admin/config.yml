@@ -1,0 +1,36 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "gallery"
+    label: "Fotky realizací"
+    label_singular: "Fotka"
+    files:
+      - file: "data/gallery.json"
+        label: "Galerie fotek"
+        name: "gallery"
+        fields:
+          - name: "items"
+            label: "Fotky"
+            widget: "list"
+            label_singular: "Fotka"
+            fields:
+              - {label: "Fotka", name: "image", widget: "image"}
+              - {label: "Popisek", name: "caption", widget: "string", required: false}
+
+  - name: "settings"
+    label: "Texty na webu"
+    files:
+      - file: "data/settings.json"
+        label: "Hlavní texty"
+        name: "settings"
+        fields:
+          - {label: "Úvodní věta pod nadpisem", name: "hero_lead", widget: "text"}
+          - {label: "O firmě — první odstavec", name: "about_text_1", widget: "text"}
+          - {label: "O firmě — druhý odstavec", name: "about_text_2", widget: "text"}
+          - {label: "Telefon", name: "phone", widget: "string"}
+          - {label: "E-mail", name: "email", widget: "string"}
