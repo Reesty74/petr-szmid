@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petr Szmid — Stavební a dlaždičské práce, Krnov</title>
+<meta name="description" content="Pokládka zámkové dlažby, přírodního kamene, gabionové zdi a ploty, demoliční a výkopové práce v Krnově a okolí.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#201E1B;
+    --charcoal-2:#2B2823;
+    --stone:#EDE8DE;
+    --stone-2:#E1DBCC;
+    --concrete:#8A8377;
+    --rust:#B5471F;
+    --rust-dark:#8C3517;
+    --moss:#4A5240;
+    --border-light:#C9C2B4;
+    --ink:#211F1B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Source Sans 3', sans-serif;
+    background:var(--stone);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    font-weight:600;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  :focus-visible{outline:3px solid var(--rust);outline-offset:2px;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--charcoal);
+    border-bottom:3px solid var(--rust);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;max-width:1120px;margin:0 auto;
+  }
+  .brand{color:var(--stone);}
+  .brand .name{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;}
+  .brand .sub{font-size:12px;color:var(--concrete);letter-spacing:0.08em;text-transform:uppercase;}
+  nav{display:flex;align-items:center;gap:28px;}
+  nav a{color:var(--stone-2);font-size:15px;font-weight:500;transition:color .15s;}
+  nav a:hover{color:var(--rust);}
+  .nav-cta{
+    background:var(--rust);color:#fff !important;padding:10px 20px;
+    border-radius:2px;font-weight:600;font-size:14px;
+    text-transform:uppercase;letter-spacing:0.04em;
+  }
+  .nav-cta:hover{background:var(--rust-dark);}
+  .menu-btn{display:none;background:none;border:none;color:var(--stone);font-size:26px;cursor:pointer;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--charcoal);
+    color:var(--stone);
+    overflow:hidden;
+    padding:72px 0 0 0;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center;
+    max-width:1120px;margin:0 auto;padding:56px 28px 0;
+  }
+  .eyebrow{
+    color:var(--rust);font-size:13px;font-weight:600;letter-spacing:0.14em;
+    text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--rust);display:inline-block;}
+  .hero h1{
+    font-size:clamp(34px,4.6vw,54px);line-height:1.35;color:#fff;margin-bottom:22px;
+  }
+  .hero h1 em{font-style:normal;color:var(--rust);}
+  .hero p.lead{
+    font-size:17px;color:var(--stone-2);max-width:480px;margin-bottom:32px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;font-weight:600;font-size:15px;
+    border-radius:2px;transition:all .15s;
+  }
+  .btn-primary{background:var(--rust);color:#fff;}
+  .btn-primary:hover{background:var(--rust-dark);}
+  .btn-ghost{border:1.5px solid var(--concrete);color:var(--stone);}
+  .btn-ghost:hover{border-color:var(--stone);}
+
+  .weave-box{position:relative;height:380px;}
+  .weave-svg rect{opacity:0;transform-origin:center;animation:layDown .55s ease-out forwards;}
+  @keyframes layDown{
+    from{opacity:0;transform:scale(.4) rotate(8deg);}
+    to{opacity:1;transform:scale(1) rotate(0deg);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .weave-svg rect{animation:none;opacity:1;}
+  }
+
+  .weave-strip{height:14px;width:100%;}
+
+  /* ---------- section basics ---------- */
+  section{padding:80px 0;}
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-head .eyebrow{color:var(--rust-dark);}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);color:var(--ink);}
+  .section-head p{color:#5b564c;font-size:16px;margin-top:14px;}
+
+  /* ---------- services ---------- */
+  .services{background:var(--stone);}
+  .service-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--border-light);border:1px solid var(--border-light);
+  }
+  .service-card{
+    background:var(--stone);padding:32px 26px;
+    transition:background .15s;
+  }
+  .service-card:hover{background:#fff;}
+  .service-icon{
+    width:46px;height:46px;border:2px solid var(--rust);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+    color:var(--rust);
+  }
+  .service-card h3{font-size:17px;color:var(--ink);margin-bottom:10px;letter-spacing:0.01em;}
+  .service-card p{font-size:14.5px;color:#5b564c;}
+
+  /* ---------- gallery ---------- */
+  .gallery-section{background:var(--stone);}
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;
+  }
+  .gallery-item{
+    border:1px solid var(--border-light);background:#fff;overflow:hidden;
+  }
+  .gallery-item img{width:100%;height:200px;object-fit:cover;display:block;}
+  .gallery-item .caption{padding:14px 16px;font-size:14px;color:#5b564c;}
+
+  /* ---------- about ---------- */
+  .about{background:var(--charcoal-2);color:var(--stone);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .about h2{color:#fff;font-size:clamp(24px,3.2vw,32px);margin-bottom:20px;}
+  .about p{color:var(--stone-2);font-size:16px;margin-bottom:16px;}
+  .about-stats{display:flex;gap:36px;margin-top:28px;}
+  .stat b{display:block;font-family:'Oswald',sans-serif;font-size:30px;color:var(--rust);}
+  .stat span{font-size:12.5px;color:var(--concrete);text-transform:uppercase;letter-spacing:0.06em;}
+  .rating-box{
+    background:var(--charcoal);border:1px solid #433f38;border-radius:3px;padding:26px;
+  }
+  .rating-box .stars{color:var(--rust);font-size:20px;letter-spacing:3px;margin-bottom:10px;}
+  .rating-box p{color:var(--stone-2);font-size:14.5px;margin-bottom:16px;}
+  .rating-box a{color:var(--rust);font-weight:600;font-size:14px;}
+  .rating-box a:hover{text-decoration:underline;}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--stone-2);}
+  .contact-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:0;border:1px solid var(--border-light);}
+  .contact-info{background:var(--stone);padding:44px;}
+  .contact-info h2{font-size:clamp(24px,3vw,30px);margin-bottom:8px;}
+  .contact-info>p{color:#5b564c;margin-bottom:28px;}
+  .info-row{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--border-light);}
+  .info-row:first-of-type{border-top:none;}
+  .info-icon{
+    width:36px;height:36px;flex:none;border-radius:2px;background:var(--charcoal);
+    color:var(--rust);display:flex;align-items:center;justify-content:center;
+  }
+  .info-label{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:#8a8577;margin-bottom:3px;}
+  .info-value{font-size:15.5px;color:var(--ink);font-weight:500;}
+  .info-value a:hover{color:var(--rust);}
+  .contact-cta{
+    background:var(--charcoal);padding:44px;display:flex;flex-direction:column;
+    justify-content:center;
+  }
+  .contact-cta .eyebrow{color:var(--rust);}
+  .contact-cta h3{color:#fff;font-size:24px;margin-bottom:14px;}
+  .contact-cta p{color:var(--stone-2);font-size:15px;margin-bottom:26px;}
+  .contact-cta .btn-primary{width:fit-content;margin-bottom:12px;}
+  .contact-cta .btn-ghost{width:fit-content;}
+
+  footer{background:var(--charcoal);color:var(--concrete);padding:28px 0;}
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    font-size:13.5px;
+  }
+  footer a:hover{color:var(--stone);}
+
+  @media (max-width:860px){
+    nav{position:fixed;inset:64px 0 auto 0;background:var(--charcoal);flex-direction:column;
+      align-items:flex-start;padding:20px 28px;gap:18px;border-bottom:3px solid var(--rust);
+      transform:translateY(-120%);transition:transform .25s;}
+    nav.open{transform:translateY(0);}
+    .menu-btn{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .weave-box{height:220px;}
+    .about-grid{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .about-stats{gap:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="name">Petr Szmid</div>
+      <div class="sub">Stavební a dlaždičské práce</div>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Otevřít menu" aria-expanded="false">☰</button>
+    <nav id="mainNav">
+      <a href="#sluzby">Služby</a>
+      <a href="#o-nas">O firmě</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="tel:+420721855460" class="nav-cta">+420 721 855 460</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Krnov &amp; okolí</div>
+      <h1>Dlažba, kámen<br>a zemní práce, <em>na které se dá stavět</em></h1>
+      <p class="lead" id="hero-lead">Rychlá a kvalitní pokládka zámkové dlažby a přírodního kamene, gabionové zdi a ploty, demolice a ruční výkopy — vše na jednom místě.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary">Nezávazná poptávka</a>
+        <a href="tel:+420721855460" class="btn btn-ghost">Zavolat +420 721 855 460</a>
+      </div>
+    </div>
+    <div class="weave-box">
+      <svg class="weave-svg" viewBox="0 0 360 456" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Ilustrace pokládky zámkové dlažby v basketweave vzoru">
+        <!-- generated basketweave grid -->
+      </svg>
+    </div>
+  </div>
+  <div class="weave-strip" style="background:var(--rust);"></div>
+</section>
+
+<section class="services" id="sluzby">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Co děláme</div>
+      <h2>Pět řemesel, jeden tým</h2>
+      <p>Od přípravy terénu po poslední spáru — kompletní realizace zpevněných ploch, opěrných konstrukcí a zemních prací.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>Zámková dlažba</h3>
+        <p>Kompletní, rychlá a kvalitní pokládka zámkové dlažby na chodníky, příjezdy i zpevněné plochy.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l4-13 5 5 3-4 4 12H4z"/></svg>
+        </div>
+        <h3>Přírodní kámen</h3>
+        <p>Pokládka dlažby a obkladů z přírodního kamene pro terasy, schodiště a zahradní cesty.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h18M3 9h18M3 13h18M3 17h18" stroke-dasharray="1.5 2.2"/><rect x="3" y="4" width="18" height="14"/></svg>
+        </div>
+        <h3>Gabionové zdi a ploty</h3>
+        <p>Opěrné zdi a ploty z gabionu — pevné, trvanlivé konstrukce vhodné i do svažitého terénu.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="16" r="4"/><circle cx="16" cy="8" r="4"/></svg>
+        </div>
+        <h3>Pokládka na skládkách</h3>
+        <p>Pokládka pneumatik na skládkách jako součást zpevňovacích a stabilizačních prací.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 16M20 4L4 20"/></svg>
+        </div>
+        <h3>Demolice a výkopy</h3>
+        <p>Demoliční práce a ruční výkopové práce jako příprava pro další stavební a zahradní úpravy.</p>
+      </div>
+      <div class="service-card" style="display:flex;flex-direction:column;justify-content:center;background:var(--charcoal);">
+        <p style="color:var(--stone-2);font-size:15px;margin-bottom:14px;">Nevíte, co přesně potřebujete? Popište nám záměr — poradíme a připravíme nabídku.</p>
+        <a href="#kontakt" style="color:var(--rust);font-weight:600;font-size:14.5px;">Napsat poptávku →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="realizace">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Realizace</div>
+      <h2>Co jsme už postavili</h2>
+      <p>Ukázky dokončených prací — zámková dlažba, kamenné plochy a gabionové konstrukce.</p>
+    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+</section>
+
+<section class="about" id="o-nas">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow" style="color:var(--rust);">O firmě</div>
+      <h2>Petr Szmid — stavební a dlaždičské práce</h2>
+      <p id="about-text-1">Naše firma se specializuje na dlaždičské práce. Provádíme kompletní, rychlou a kvalitní pokládku zámkové dlažby a pokládku přírodního kamene.</p>
+      <p id="about-text-2">Dále stavíme opěrné zdi a ploty z gabionu a provádíme pokládku pneumatik na skládkách. Zaměřujeme se také na demoliční práce a ruční výkopové práce.</p>
+      <div class="about-stats">
+        <div class="stat"><b>04337778</b><span>IČO</span></div>
+        <div class="stat"><b>Krnov</b><span>Pod Bezručovým vrchem</span></div>
+      </div>
+    </div>
+    <div class="rating-box">
+      <div class="stars">★★★★★</div>
+      <p>Firma je hodnocena na portálu Firmy.cz — podívejte se na aktuální hodnocení nebo přidejte vlastní zkušenost.</p>
+      <a href="https://www.firmy.cz/detail/13343008-petr-szmid-krnov-pod-bezrucovym-vrchem.html#hodnoceni" target="_blank" rel="noopener">Zobrazit hodnocení na Firmy.cz →</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Kontakt</h2>
+        <p>Ozvěte se telefonicky, e‑mailem, nebo nás navštivte přímo v Krnově.</p>
+
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="info-label">Mobil</div>
+            <div class="info-value"><a href="tel:+420721855460">+420 721 855 460</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></div>
+          <div>
+            <div class="info-label">E‑mail</div>
+            <div class="info-value"><a href="mailto:petrszmid89@seznam.cz">petrszmid89@seznam.cz</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="info-label">Adresa</div>
+            <div class="info-value">Revoluční 914/14, 794 01 Krnov<br>Pod Bezručovým vrchem
+              <br><a href="https://mapy.com/cs/zakladni?planovani-trasy&x=17.696607&y=50.089270&z=17&rc=9oRdWxXxxe&rs=&rs=firm&ri=&ri=13343008&mrp=%7B%22c%22%3A%20111%7D&rt=" target="_blank" rel="noopener" style="color:var(--rust-dark);font-weight:600;">Navigovat na Mapy.cz →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 3v18M16 3v18M3 8h18M3 16h18"/></svg></div>
+          <div>
+            <div class="info-label">Web</div>
+            <div class="info-value"><a href="https://www.ps-stav-cz2.webnode.cz" target="_blank" rel="noopener">www.ps-stav-cz2.webnode.cz</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+          <div>
+            <div class="info-label">IČO</div>
+            <div class="info-value">04337778</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <div class="eyebrow">Poptávka</div>
+        <h3>Máte plán, my máme dlažbu</h3>
+        <p>Napište pár řádků o tom, co potřebujete zrealizovat — ozveme se zpět s termínem a orientační cenou.</p>
+        <a href="mailto:petrszmid89@seznam.cz?subject=Popt%C3%A1vka%20z%20webu" class="btn btn-primary">Napsat e‑mail</a>
+        <a href="tel:+420721855460" class="btn btn-ghost">Zavolat rovnou</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> Petr Szmid — Stavební a dlaždičské práce</span>
+    <span>Revoluční 914/14, Krnov · IČO 04337778</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  fetch('data/settings.json').then(function(r){ return r.json(); }).then(function(s){
+    if (s.hero_lead) document.getElementById('hero-lead').textContent = s.hero_lead;
+    if (s.about_text_1) document.getElementById('about-text-1').textContent = s.about_text_1;
+    if (s.about_text_2) document.getElementById('about-text-2').textContent = s.about_text_2;
+    if (s.phone){
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+        a.href = 'tel:' + s.phone.replace(/\s/g,'');
+        if (a.textContent.indexOf('+') === 0 || /\d/.test(a.textContent)) a.textContent = a.textContent.replace(/\+?\d[\d\s]+\d/, s.phone);
+      });
+    }
+    if (s.email){
+      document.querySelectorAll('a[href^="mailto:"]').forEach(function(a){
+        var subject = a.href.indexOf('?') > -1 ? a.href.split('?')[1] : '';
+        a.href = 'mailto:' + s.email + (subject ? '?' + subject : '');
+        if (a.textContent.indexOf('@') > -1) a.textContent = s.email;
+      });
+    }
+  }).catch(function(){});
+
+  fetch('data/gallery.json').then(function(r){ return r.json(); }).then(function(data){
+    var grid = document.getElementById('gallery-grid');
+    var items = data.items || [];
+    if (!grid || !items.length) return;
+    grid.innerHTML = items.map(function(item){
+      return '<div class="gallery-item"><img src="' + item.image + '" alt="' + (item.caption || '') + '" loading="lazy"><div class="caption">' + (item.caption || '') + '</div></div>';
+    }).join('');
+  }).catch(function(){});
+
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('mainNav');
+  menuBtn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); });
+  });
+
+  (function buildWeave(){
+    var svg = document.querySelector('.weave-svg');
+    var cols = 5, rows = 6;
+    var cellW = 72, cellH = 76, gap = 3;
+    var colors = ['#8A8377', '#B5471F', '#4A5240'];
+    var i = 0;
+    for (var r = 0; r < rows; r++){
+      for (var c = 0; c < cols; c++){
+        var x = c * cellW, y = r * cellH;
+        var vertical = (r + c) % 2 === 0;
+        var color = colors[(r + c) % 3 === 0 ? 1 : (r % 2 === 0 ? 0 : 2)];
+        var rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        if (vertical){
+          rect.setAttribute('x', x + gap);
+          rect.setAttribute('y', y + gap);
+          rect.setAttribute('width', cellW/2 - gap*1.5);
+          rect.setAttribute('height', cellH - gap*2);
+        } else {
+          rect.setAttribute('x', x + cellW/2 + gap*0.5);
+          rect.setAttribute('y', y + gap);
+          rect.setAttribute('width', cellW/2 - gap*1.5);
+          rect.setAttribute('height', cellH/2 - gap*1.5);
+        }
+        rect.setAttribute('fill', color);
+        rect.setAttribute('rx', '1.5');
+        rect.style.animationDelay = (i * 0.028) + 's';
+        svg.appendChild(rect);
+        i++;
+
+        if (!vertical){
+          var rect2 = document.createElementNS('http://www.w3.org/2000/svg','rect');
+          rect2.setAttribute('x', x + cellW/2 + gap*0.5);
+          rect2.setAttribute('y', y + cellH/2 + gap*0.5);
+          rect2.setAttribute('width', cellW/2 - gap*1.5);
+          rect2.setAttribute('height', cellH/2 - gap*1.5);
+          rect2.setAttribute('fill', colors[(r + c + 1) % 3]);
+          rect2.setAttribute('rx', '1.5');
+          rect2.style.animationDelay = (i * 0.028) + 's';
+          svg.appendChild(rect2);
+          i++;
+        }
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
